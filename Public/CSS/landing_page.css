@@ -1,0 +1,116 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Courier New', Courier, monospace;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(5, 4, 19);
+}
+
+#header {
+    width: 100%;
+    height: 13vh;
+    background-color: rgb(12, 40, 64);
+    background-position: right;
+    background-repeat: no-repeat;
+}
+
+.container {
+    padding: 15px 5%;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.logo {
+    width: 15rem;
+}
+
+nav ul li {
+    display: inline-block;
+    list-style: none;
+    margin: 20px 15px 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    position: relative;
+    font-size: 3vh;
+}
+
+nav ul li a:hover {
+    color: skyblue;
+}
+
+nav ul li a::after {
+    content: '';
+    width: 0;
+    height: 3px;
+    background: skyblue;
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    transition: 1.3s;
+}
+
+nav ul li a:hover::after {
+
+    width: 80%;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+    background: rgb(181, 3, 205);
+}
+
+/* Main part */
+.mainPart {
+    margin-top: 10vh;
+    margin-left: 10vh;
+    margin-right: 10vh;
+    display: flex;
+    background-image: url('../Images/bodyimg.jpg');
+    background-position: center;
+    height: 70vh;
+    border-radius: 8px;
+}
+
+.mainPart .mainText {
+    display: inline-block;
+    margin-top: 10vh;
+    padding: 3vh;
+    width: 32rem;
+}
+
+#heading p {
+    font-size: 50px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: white;
+}
+
+#heading button {
+    padding: 9px;
+    margin-top: 15px;
+    height: 6vh;
+    width: 20vh;
+    background-color: rgb(12, 40, 64);
+    color: white;
+    font-size: 20px;
+    border-radius: 5px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    transition: 0.7s;
+}
+
+#heading button:hover {
+    background-color: white;
+    color: rgb(12, 40, 64);
+    transition: 0.7s;
+}
