@@ -36,7 +36,7 @@ body('password', 'Password Should be of at least 5 characters').isLength({ min: 
                         _id: createdUser.id
                     }
                 }
-                const JWT_SECRET = 'mananisagoodboy';
+                const JWT_SECRET = 'mananis$$agoodboy';
                 const authToken = jwt.sign(data, JWT_SECRET);
                 res.json({ authToken });
             }
@@ -47,6 +47,35 @@ body('password', 'Password Should be of at least 5 characters').isLength({ min: 
         }
     })
 
+router.post('/login', [
+    body('email', 'PLease Enter the valid Email').isEmail(),
+    body('password', 'Password Cannot be blank').exists()
+],
+    async (req, res, next) => {
+        const result = validationResult(req);
+        if (!result.isEmpty()) {
+            return res.status(400).json({ result });
+        }
 
+        try {
+
+            const { email, password } = req.body;
+            const resultantEmail = await schema.findOne({ email: email })
+            if (!resultantEmail) {
+                return res.status(400).json({ message: 'Please Authenticate using valid Credentials' })
+            }
+
+            const resultantPassword = await bycrypt.compare(password, resultantEmail.password);
+            if (!resultantPassword) {
+                return res.status(400).json({ message: 'Please Authenticate using valid Credentials' })
+            }
+
+            res.json({ resultantEmail })
+
+        } catch (error) {
+            console.log(error.message);
+            res.status(500).json({ message: 'Some error Occured in the internal Server' });
+        }
+    })
 
 module.exports = router;
