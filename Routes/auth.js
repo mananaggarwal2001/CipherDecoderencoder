@@ -5,9 +5,10 @@ const bycrypt = require('bcryptjs');
 const schema = require('../Schema/UserSchema.js');
 const jwt = require('jsonwebtoken')
 const path = require('path')
+const JWT_SECRET = 'mananis$$agoodboy';
 
 
-router.post('/signUp', [body('name', 'Name Feild Should be of Minimum 3 characters long').isLength({ min: 3 })
+router.post('/signUp', [body('name', 'Name Field Should be of Minimum 3 characters long').isLength({ min: 3 })
     , body('email', 'Enter the valid Email').isEmail(),
 body('password', 'Password Should be of at least 5 characters').isLength({ min: 5 })
 ]
@@ -31,12 +32,14 @@ body('password', 'Password Should be of at least 5 characters').isLength({ min: 
                     email: email,
                     password: securePassword
                 })
+                res.json({ createdUser })
                 const data = {
                     user: {
                         _id: createdUser.id
                     }
                 }
-                const JWT_SECRET = 'mananis$$agoodboy';
+                res.send({ createdUser });
+
                 const authToken = jwt.sign(data, JWT_SECRET);
                 res.json({ authToken });
             }
@@ -60,17 +63,24 @@ router.post('/login', [
         try {
 
             const { email, password } = req.body;
-            const resultantEmail = await schema.findOne({ email: email })
-            if (!resultantEmail) {
-                return res.status(400).json({ message: 'Please Authenticate using valid Credentials' })
+            const resultantDetails = await schema.findOne({ email: email });
+            if (!resultantDetails) {
+                return res.status(400).json({ message: 'Please Authenticate using valid Credentials email' })
             }
 
-            const resultantPassword = await bycrypt.compare(password, resultantEmail.password);
+            const resultantPassword = await bycrypt.compare(password, resultantDetails.password);
             if (!resultantPassword) {
-                return res.status(400).json({ message: 'Please Authenticate using valid Credentials' })
+                return res.status(400).json({ message: 'Please Authenticate using valid Credentials password' })
             }
 
-            res.json({ resultantEmail })
+            const data = {
+                user: {
+                    id: resultantDetails.id
+                }
+            }
+            const authToken = jwt.sign(data, JWT_SECRET);
+            // localStorage.setItem('auth-token', authToken)
+            res.send({ authToken });
 
         } catch (error) {
             console.log(error.message);

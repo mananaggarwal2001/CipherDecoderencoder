@@ -18,7 +18,7 @@ app.get('/', (req, res, next) => {
 
 
 app.use('/api/auth', auth);
-
+app.use('/api/details', require('./Routes/Details'));
 app.listen('3000', () => {
     console.log('Connection is made Successfully to the port 3000');
 })
