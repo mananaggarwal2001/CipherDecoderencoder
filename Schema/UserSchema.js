@@ -7,19 +7,27 @@ const UserSchema = mongoose.Schema({
         type: String,
         require:true
     },
-    // fatherName: {
-    //     type: String,
-    //     require:true
-    // },
-    // motherName: {
-    //     type: String,
-    //     require:true
-    // },
-    // dateofBirth: {
-    //     type: String,
-    //     require:true
-    // },
+    fatherName: {
+        type: String,
+        require:true
+    },
+    motherName: {
+        type: String,
+        require:true
+    },
+    dateofBirth: {
+        type: String,
+        require:true
+    },
     email: {
+        type: String,
+        require: true
+    },
+    phoneNumber: {
+        type: Number,
+        require: true
+    },
+    address: {
         type: String,
         require: true
     },

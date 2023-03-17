@@ -5,7 +5,11 @@ const bycrypt = require('bcryptjs');
 const schema = require('../Schema/UserSchema.js');
 const jwt = require('jsonwebtoken')
 const path = require('path')
+const { token } = require('../middleware/verifyUser')
 const JWT_SECRET = 'mananis$$agoodboy';
+const http = require('http')
+const queryString = require('querystring')
+const request = require('request');
 
 
 router.post('/signUp', [body('name', 'Name Field Should be of Minimum 3 characters long').isLength({ min: 3 })
@@ -20,7 +24,7 @@ body('password', 'Password Should be of at least 5 characters').isLength({ min: 
         }
 
         try {
-            const { name, email } = req.body;
+            const { name, email, fatherName, motherName, dateofbirth, phoneNumber } = req.body;
             const details = await schema.findOne({ email: req.body.email }); // this is to find the same email id of the user whether exists or not then act according to that.
             if (details) {
                 return res.status(400).json({ message: "Sorry this user with this email id Already exists" })
@@ -30,18 +34,13 @@ body('password', 'Password Should be of at least 5 characters').isLength({ min: 
                 const createdUser = await schema.create({
                     name: name,
                     email: email,
-                    password: securePassword
+                    password: securePassword,
+                    fatherName: fatherName,
+                    motherName: motherName,
+                    dateofbirth: dateofbirth,
+                    phoneNumber: phoneNumber
                 })
-                res.json({ createdUser })
-                const data = {
-                    user: {
-                        _id: createdUser.id
-                    }
-                }
                 res.send({ createdUser });
-
-                const authToken = jwt.sign(data, JWT_SECRET);
-                res.json({ authToken });
             }
 
         } catch (error) {
@@ -78,9 +77,10 @@ router.post('/login', [
                     id: resultantDetails.id
                 }
             }
-            const authToken = jwt.sign(data, JWT_SECRET);
-            // localStorage.setItem('auth-token', authToken)
-            res.send({ authToken });
+            const authToken = jwt.sign(data, JWT_SECRET)
+            token = authToken;
+
+            res.redirect('http://localhost:3000/api/details/dashboard');
 
         } catch (error) {
             console.log(error.message);

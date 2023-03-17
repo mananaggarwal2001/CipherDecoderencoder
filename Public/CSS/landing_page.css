@@ -1,12 +1,11 @@
 * {
     margin: 0px;
     padding: 0px;
-    font-family: 'Courier New', Courier, monospace;
-    box-sizing: border-box;
 }
 
 body {
     background-color: rgb(5, 4, 19);
+    /* background-image: url('../files/bodyimg.jpg'); */
 }
 
 #header {
@@ -27,6 +26,8 @@ nav {
     justify-content: space-between;
     flex-wrap: wrap;
 }
+
+
 
 .logo {
     width: 15rem;
@@ -50,6 +51,15 @@ nav ul li a:hover {
     color: skyblue;
 }
 
+#sidemenu {
+    /* width: 0vw; */
+    /* display: none; */
+    /* visibility: hidden; */
+    /* background-color: #93294d; */
+    /* display: none; */
+
+}
+
 nav ul li a::after {
     content: '';
     width: 0;
@@ -69,34 +79,180 @@ nav ul li a:hover::after {
 nav ul li a:hover::after {
     width: 100%;
     background: rgb(181, 3, 205);
+    background-position: left;
 }
 
 /* Main part */
 .mainPart {
-    margin-top: 10vh;
-    margin-left: 10vh;
-    margin-right: 10vh;
+    border: 5px solid black;
     display: flex;
     background-image: url('../Images/bodyimg.jpg');
-    background-position: center;
-    height: 70vh;
-    border-radius: 8px;
+    height: 75vh;
+    background-size: cover;
+
+    margin-top: 5vh;
+    /* box-shadow: 10px 10px 13px 12px#93294d; */
+    box-shadow: 2px 3px 13px 8px #93294d;
+}
+
+.mainPart .leftSide {
+    padding: 2vh;
+    /* background-color: #93294d; */
+    border: 2px solid palevioletred;
+    width: 12vw;
+    display: flex;
+    flex-direction: column;
+    margin-top: 1vh;
+}
+
+.mainPart .leftSide,
+form {
+    /* border: 3px solid rgb(14, 22, 179); */
+    display: flex;
+    flex-direction: column;
+    height: 68vh;
+    width: 21vw;
+
+    border-radius: 1.2vh;
+}
+
+#sidemenuForm {
+    /* transition: 1s;
+    transition-property:visibilty;
+    transition-timing-function: ease-in-out; */
+    /* transition-duration: 1s; */
+    /* transition: cubic-bezier(0.075, 0.82, 0.165, 1); */
+}
+
+#closeIcon {
+    position: absolute;
+    left: 210px;
+}
+
+.mainPart .rightSide {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center;
+    text-align: center; */
+    width: 85vw;
+    align-items: center;
+    justify-content: center;
+}
+
+input {
+    height: 5vh;
+    width: inherit;
+    margin-bottom: 4vh;
+    border-radius: 10.2px;
+    background: transparent;
+    color: white;
+    resize: none;
+    padding: 10px;
+}
+
+textarea {
+    background: transparent;
+    width: inherit;
+    resize: none;
+    border-radius: 10.2px;
+    color: white;
+    padding: 10px;
+}
+
+.rit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+form {
+    /* margin-top: 4vh; */
+    width: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+form button {
+
+    padding: 9px;
+    margin-top: 5px;
+    height: 6vh;
+    width: 65px;
+    margin-left: 10px;
+    background-color: rgb(12, 40, 64);
+    color: white;
+    font-size: 15px;
+    border-radius: 5px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    transition: 0.7s;
+}
+
+form button:hover {
+    background-color: white;
+    color: rgb(12, 40, 64);
+    transition: 0.7s;
 }
 
 .mainPart .mainText {
-    display: inline-block;
-    margin-top: 10vh;
-    padding: 3vh;
-    width: 32rem;
+    display: block;
+    margin-top: 1.6vh;
+    padding: 1vh;
+    width: 55vw;
+    /* border: 2px solid black; */
+    /* /* align-items: center; */
+    /* border: 2px solid black; */
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 #heading p {
-    font-size: 50px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 3.5rem;
+    /* font-family:Georgia, 'Times New Roman', Times, serif; */
+    font-family: 'Roboto Slab', serif;
+    /* color: black; */
     color: white;
+    /* color: black; */
+    text-align: center;
+
 }
 
-#heading button {
+p#motto {
+    font-size: 1.2rem;
+    text-align: center;
+    color: white;
+    /* color: black; */
+}
+
+div.mainIcon {
+    margin-top: 10px;
+    text-align: center;
+    /* display: flex; */
+
+    align-items: center;
+    justify-content: center;
+    /* border: 2px solid black; */
+}
+
+.mainIcon img {
+    height: 35vh;
+    width: auto;
+    margin: auto;
+}
+
+.formButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 9px;
     margin-top: 15px;
     height: 6vh;
@@ -109,8 +265,119 @@ nav ul li a:hover::after {
     transition: 0.7s;
 }
 
-#heading button:hover {
+button:hover {
     background-color: white;
     color: rgb(12, 40, 64);
     transition: 0.7s;
+}
+
+/* Heading */
+.textJH {
+    margin-top: 30px;
+}
+
+.textJH h2 {
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 3.5rem;
+    color: white;
+}
+
+/* Features */
+.features {
+    display: flex;
+    margin-top: 5vh;
+    justify-content: space-around;
+    padding: 8vh;
+    flex-wrap: wrap;
+    /* position: relative; */
+}
+
+.content {
+    background-color: rgba(0, 0, 0, 0.54);
+    height: inherit;
+    position: absolute;
+    width: inherit;
+    top: 200px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition-property: all;
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.5s;
+
+
+}
+
+.featureBox:hover .content {
+    top: 0;
+}
+
+.featureBox {
+    height: 200px;
+    box-shadow: 2px 3px 13px 8px #93294d;
+    width: 45vh;
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+}
+
+#featureBox1 {
+    background-image: url('../Images/security.jpg');
+    background-position: center;
+}
+
+#featureBox2 {
+    background-image: url('../Images/privacy.jpg');
+    background-position: center;
+}
+
+#featureBox3 {
+    background-image: url('../Images/password.jpg');
+    background-position: center;
+}
+
+
+
+.content {
+    display: flex;
+    flex-direction: column;
+}
+
+.featureBox .heading {
+    font-size: 4.4vh;
+    color: white;
+    margin-top: 1.4vh;
+}
+
+.featureBox .text {
+    font-size: 2.5vh;
+    color: white;
+    margin-top: 1.4vh;
+}
+
+.content {
+    padding: 2vh;
+}
+
+.content i {
+    font-size: 3rem;
+    color: white;
+    margin-top: 1vh;
+}
+
+
+
+/* FOOTER */
+footer {
+    background-color: rgb(12, 40, 64);
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer {
+    /* text-align: center; */
+    color: white;
 }

@@ -1,16 +1,19 @@
 const JWT_SECRET = 'mananis$$agoodboy';
 const jwt = require('jsonwebtoken')
+let token = "";
+
 const verifyUser = (req, res, next) => {
-    const token = req.header('auth-token');
-    if (!token) {
+    let  fetchedtoken = req.header('auth-token');
+    if (!fetchedtoken) {
         return res.status(400).json({ error: 'Not Found' });
     }
 
     try {
 
-        const verifyUser = jwt.verify(token, JWT_SECRET);
-        req.user = verifyUser.user;
-        next();
+        // const verifyUser = jwt.verify(token, JWT_SECRET);
+        // req.user = verifyUser.user;
+        // next();
+        console.log(fetchedtoken)
 
     } catch (error) {
         console.log(error.message);
@@ -19,4 +22,4 @@ const verifyUser = (req, res, next) => {
 
 }
 
-module.exports = verifyUser;
+module.exports = {verifyUser,token};

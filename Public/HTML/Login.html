@@ -1,49 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CODE SMASHERS || login_user</title>
     <link rel="stylesheet" href="../CSS/login.css">
-    <title> Siginin </title>
 </head>
 
 <body>
-    <h2>Modal Login Form</h2>
-    <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
-    <div id="id01" class="modal">
-        <form class="modal-content animate" action="/action_page.php" method="post">
-            <div class="imgcontainer">
-                <span onclick="document.getElementById('id01').style.display='none'" class="close"
-                    title="Close Modal">&times;</span>
-                <img src="img_avatar2.png" alt="Avatar" class="avatar">
+    <div id="header">
+        <div class="container">
+            <nav>
+                <img src="../Images/codeSmashersLogo.jpg" alt="Failed to reload!!" class="logo">
+                <ul id="sidemenu">
+                    <li><a href="login_user.html" class="currentPage">Login</a></li>
+                    <li><a href="SignUp.html">Sign in</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <!-- Login form -->
+    <div class="form">
+        <h2>Login User</h2>
+        <form method="post" action="/api/auth/login" enctype="application/x-www-form-urlencoded">
+            <div class="input1">
+                <input id="email" type="email" name="email" id="" placeholder="Enter Your Email">
             </div>
-            <div class="container">
-                <label for="uname"><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="uname" required>
-                <label for="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="psw" required>
-                <button type="submit">Login</button>
-                <label>
-                    <input type="checkbox" checked="checked" name="remember"> Remember me </label>
+            <div class="input1">
+                <input id="password" type="password" name="password" class="requiredInput"  placeholder="Enter Your Password" required>
             </div>
-            <div class="container" style="background-color:#f1f1f1">
-                <button type="button" onclick="document.getElementById('id01').style.display='none'"
-                    class="cancelbtn">Cancel</button>
-                <span class="psw">Forgot <a href="#">password?</a></span>
+            <div class="button">
+                <button type="reset">Reset</button>
+                <button id="submitButton" type="submit">Login</button>
             </div>
         </form>
     </div>
-    <script>
-        // Get the modal
-        var modal = document.getElementById('id01');
-
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function (event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-    </script>
+    <script src="../Javascript/login.js"></script>
 </body>
 
 </html>

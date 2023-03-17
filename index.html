@@ -7,7 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CODE SMASHERS || Landing Page</title>
     <!-- Linking Css -->
-    <link rel="stylesheet" href="./CSS/landing_page.css">
+    <link rel="stylesheet" href="../css/landing_page.css">
+    <!-- linking fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=EB+Garamond:ital,wght@1,500&family=Roboto+Slab&display=swap"
+        rel="stylesheet">
+    <!-- linking icons links -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 </head>
 
 <body>
@@ -17,18 +26,125 @@
                 <img src="./Images/codeSmashersLogo.jpg" alt="Failed to reload!!" class="logo">
                 <ul id="sidemenu">
                     <li><a href="./HTML/Login.html">Login</a></li>
-                    <li><a href="./HTML/SignUp.html">Sign in</a></li>
+                    <li><a href="./HTML/SignUp.html">Sign Up</a></li>
                 </ul>
             </nav>
         </div>
     </div>
     <!-- main part -->
+    <!-- <i class="material-symbols-outlined" onclick="openmenu()">
+        Menu
+    </i>
+    <i id="closeIcon" class="material-symbols-outlined" onclick="closemenu()">
+        close
+    </i> -->
     <div class="mainPart">
-        <div class="mainText" id="heading">
-            <p> Reveal Your True Cyber Security Digital Footprint </p>
-            <button>Read More</button>
+        <div class="leftSide " id="sidemenuForm">
+            <!-- <i id="closeIcon" class="material-symbols-outlined" onclick="closemenu()">
+                close
+            </i> -->
+            <p>Your Query Here</p>
+            <div class="form leftsidewidth">
+                <form name="submit-to-google-sheet">
+                    <input type="text" name="Name" placeholder="Full Name">
+                    <input type="email" name="Email" placeholder="Your Email">
+                    <input type="number" name="ContactNumber" placeholder="Contact Number">
+                    <textarea name="Message" id="" cols="30" rows="10" placeholder="Your Message"></textarea>
+                    <div class="formButton"><button type="reset">Reset</button><button type="submit">Submit</button>
+                    </div>
+                    <span id="msg"></span>
+                </form>
+            </div>
+        </div>
+        <div class="rightSide">
+            <div class="rit">
+                <div class="mainText" id="heading">
+                    <p> Your Security Our Passion </p>
+                    <p id="motto">More Privacy || More Enhanced</p>
+                </div>
+                <div class="mainIcon">
+                    <img src="./Images/icon.png" alt="" srcset="">
+                </div>
+            </div>
         </div>
     </div>
+    </div>
+    <!-- Heading -->
+    <div class="textJH">
+        <h2>Why To Choose US</h2>
+    </div>
+    <!-- Features -->
+    <div class="features">
+        <div class="featureBox" id="featureBox1">
+            <div class="content">
+                <i class="material-symbols-outlined"> security</i>
+                <p class="heading"> Security</p>
+                <p class="text">Uses Latest Technology</p>
+            </div>
+        </div>
+        <div class="featureBox" id="featureBox2">
+            <div class="content">
+                <i class="material-symbols-outlined"> lock</i>
+                <p class="heading"> Privacy</p>
+                <p class="text">Data is more secured</p>
+            </div>
+        </div>
+        <div class="featureBox" id="featureBox3">
+            <div class="content">
+                <i class="material-symbols-outlined"> vpn_key</i>
+                <p class="heading"> Password</p>
+                <p class="text">More complex hashing , more complex password.</p>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer>
+        <div class="footer"> CODESMASHERS &COPY; 2023 || MAKING PRIVACY BETTER </div>
+    </footer>
+    <!-- Script -->
+    <script defer>
+        // var closeIcon=document.getElementById("closeIcon");
+        // var sidemenu=document.getElementById("sidemenu");
+        // sidemenu.style.left="0";
+        // closeIcon.addEventListener('click',()=>{
+
+        //     closeIcon.classList.toggle('nameClass');
+        //     if(closeIcon.classList.contains('nameClass')){
+        //     sidemenu.style.visibility="hidden";
+        // }
+
+
+        // })
+        var closeIcon = document.getElementById("closeIcon");
+        var sidemenu = document.getElementById("sidemenuForm");
+        function openmenu() {
+            sidemenu.style.visibility = "hidden";
+        }
+        function closemenu() {
+            sidemenu.style.visibility = "visible";
+        }
+
+    </script>
+    <!-- linking to google sheet -->
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwHHtQpTReTnKLBc3nXNGfGMj5FLF3lOyGeH7Hw0lECZq9mPnOCBYtxKxUII4ZJ8Ip4vA/exec'
+        const form = document.forms['submit-to-google-sheet']
+
+
+
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(response => {
+                    msg.innerHTML = "Message sent succesfully"
+                    setTimeout(function () {
+                        msg.innerHTML = ""
+                    }, 5000)
+                    form.reset()
+                })
+                .catch(error => console.error('Error!', error.message))
+        })
+    </script>
 </body>
 
 </html>
